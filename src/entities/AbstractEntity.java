@@ -42,25 +42,21 @@ public abstract class AbstractEntity implements Entity {
 
 	@Override
 	public double getX() {
-		// TODO Auto-generated method stub
 		return x;
 	}
 
 	@Override
 	public double getY() {
-		// TODO Auto-generated method stub
 		return y;
 	}
 
 	@Override
 	public double getHeight() {
-		// TODO Auto-generated method stub
 		return height;
 	}
 
 	@Override
 	public double getWidth() {
-		// TODO Auto-generated method stub
 		return width;
 	}
 

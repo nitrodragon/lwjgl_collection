@@ -4,7 +4,6 @@ import org.lwjgl.*;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.*;
 
-import entities.AbstractEntity;
 import entities.AbstractMoveableEntity;
 
 import static org.lwjgl.opengl.GL11.*;
@@ -78,11 +77,13 @@ public class PongGame {
 		&& ball.getX() >= paddle.getX() && ball.getY() >= paddle.getY() 
 		&& ball.getY() <= paddle.getY() + paddle.getHeight()) {
 			ball.setDX(0.3);
+			// TODO Random ball.setDY()
 		}
 		if (ball.getX() <= playerTwo.getX() + playerTwo.getWidth() 
 		&& ball.getX() >= playerTwo.getX() - playerTwo.getWidth() && ball.getY() >= playerTwo.getY() 
 		&& ball.getY() <= playerTwo.getY() + playerTwo.getHeight()) {
 			ball.setDX(-0.3);
+			// TODO Random ball.setDY()
 		}
 	}
 

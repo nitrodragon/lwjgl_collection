@@ -33,6 +33,7 @@ public class TextureDemo {
         wood = loadTexture("wood");
         
         try {
+			@SuppressWarnings("unused")
 			Texture texture = TextureLoader.getTexture("PNG", new FileInputStream(new File("res/wood.png")));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -73,16 +74,17 @@ public class TextureDemo {
     	try {
 			return TextureLoader.getTexture("PNG", new FileInputStream(new File("res/" + key + ".png")));
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	return null;
     }
     
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
-		TextureDemo test = new TextureDemo();
+		new TextureDemo();
 	}
 }

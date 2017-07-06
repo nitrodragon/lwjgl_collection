@@ -40,23 +40,23 @@ public class PongGame {
 		Display.destroy();
 	}
 	
-	private void p2input() {
+	private void input() {
 		if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
-			playerTwo.setDY(-.5);
-		} else if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
-			playerTwo.setDY(.5);
-		} else {
-			playerTwo.setDY(0);
-		}
-	}
-
-	private void input() throws IllegalStateException {
-		if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
 			paddle.setDY(-.5);
-		} else if (Keyboard.isKeyDown(Keyboard.KEY_DOWN)) {
+		} else if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
 			paddle.setDY(.5);
 		} else {
 			paddle.setDY(0);
+		}
+	}
+
+	private void p2input() throws IllegalStateException {
+		if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
+			playerTwo.setDY(-.5);
+		} else if (Keyboard.isKeyDown(Keyboard.KEY_DOWN)) {
+			playerTwo.setDY(.5);
+		} else {
+			playerTwo.setDY(0);
 		}
 	}
 

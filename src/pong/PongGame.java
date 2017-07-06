@@ -90,12 +90,18 @@ public class PongGame {
 			ball.setDY(ThreadLocalRandom.current().nextDouble(-0.3, 0.4));
 		}
 		if (ball.getX() <= 0) {
-			ball.setDX(0.3);
 			p2Score++;
+			ball.setX(WIDTH / 2 - 10 / 2);
+			ball.setY(HEIGHT / 2 - 10 / 2);
+			ball.setDX(0.1);
+			ball.setDY(0.0);
 		}
 		if (ball.getX() >= (WIDTH - ball.getWidth())) {
-			ball.setDX(-0.3);
 			p1Score++;
+			ball.setX(WIDTH / 2 - 10 / 2);
+			ball.setY(HEIGHT / 2 - 10 / 2);
+			ball.setDX(-0.1);
+			ball.setDY(0.0);
 		}
 		if (ball.getY() <= 0) {
 			ball.setDY(0.3);

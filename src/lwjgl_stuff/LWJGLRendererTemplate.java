@@ -12,7 +12,7 @@ public class LWJGLRendererTemplate {
         
     	try {
             Display.setDisplayMode(new DisplayMode(640, 480));
-            Display.setTitle("Episode 3 - OpenGL Rendering");
+            Display.setTitle("LWJGL Template");
             Display.create();
         } catch (LWJGLException e) {
             e.printStackTrace();
@@ -45,6 +45,10 @@ public class LWJGLRendererTemplate {
         Display.destroy();
         System.exit(0);
     }
+    
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
 		new LWJGLRendererTemplate();
 	}

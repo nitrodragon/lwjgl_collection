@@ -33,13 +33,13 @@ public class TextureDemo {
         wood = loadTexture("wood");
         
         try {
-			@SuppressWarnings("unused")
-			Texture texture = TextureLoader.getTexture("PNG", new FileInputStream(new File("res/wood.png")));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	@SuppressWarnings("unused")
+	Texture texture = TextureLoader.getTexture("PNG", new FileInputStream(new File("res/wood.png")));
+	} catch (FileNotFoundException e) {
+		e.printStackTrace();
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
         
         glOrtho(0, 640, 480, 0, 1, -1);
         glMatrixMode(GL_MODELVIEW);
@@ -72,12 +72,12 @@ public class TextureDemo {
     
     private Texture loadTexture(String key) {
     	try {
-			return TextureLoader.getTexture("PNG", new FileInputStream(new File("res/" + key + ".png")));
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	    return TextureLoader.getTexture("PNG", new FileInputStream(new File("res/" + key + ".png")));
+	} catch (FileNotFoundException e) {
+	    e.printStackTrace();
+	} catch (IOException e) {
+	    e.printStackTrace();
+	}
     	return null;
     }
     

@@ -8,6 +8,8 @@ import entities.AbstractMoveableEntity;
 
 import static org.lwjgl.opengl.GL11.*;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class PongGame {
 
 	public static final int WIDTH = 640;
@@ -16,6 +18,8 @@ public class PongGame {
 	private Ball ball;
 	private Paddle paddle;
 	private Paddle playerTwo;
+	private int p1Score;
+	private int p2Score;
 	
 	public PongGame() {
 		setupDisplay();
@@ -38,19 +42,19 @@ public class PongGame {
 	
 	private void p2input() {
 		if (Keyboard.isKeyDown(Keyboard.KEY_W)) {
-			playerTwo.setDY(-.2);
+			playerTwo.setDY(-.5);
 		} else if (Keyboard.isKeyDown(Keyboard.KEY_S)) {
-			playerTwo.setDY(.2);
+			playerTwo.setDY(.5);
 		} else {
 			playerTwo.setDY(0);
 		}
 	}
 
-	private void input() {
+	private void input() throws IllegalStateException {
 		if (Keyboard.isKeyDown(Keyboard.KEY_UP)) {
-			paddle.setDY(-.2);
+			paddle.setDY(-.5);
 		} else if (Keyboard.isKeyDown(Keyboard.KEY_DOWN)) {
-			paddle.setDY(.2);
+			paddle.setDY(.5);
 		} else {
 			paddle.setDY(0);
 		}
@@ -77,13 +81,38 @@ public class PongGame {
 		&& ball.getX() >= paddle.getX() && ball.getY() >= paddle.getY() 
 		&& ball.getY() <= paddle.getY() + paddle.getHeight()) {
 			ball.setDX(0.3);
-			// TODO Random ball.setDY()
+			ball.setDY(ThreadLocalRandom.current().nextDouble(-0.3, 0.4));
 		}
 		if (ball.getX() <= playerTwo.getX() + playerTwo.getWidth() 
 		&& ball.getX() >= playerTwo.getX() - playerTwo.getWidth() && ball.getY() >= playerTwo.getY() 
 		&& ball.getY() <= playerTwo.getY() + playerTwo.getHeight()) {
 			ball.setDX(-0.3);
-			// TODO Random ball.setDY()
+			ball.setDY(ThreadLocalRandom.current().nextDouble(-0.3, 0.4));
+		}
+		if (ball.getX() <= 0) {
+			ball.setDX(0.3);
+			p2Score++;
+		}
+		if (ball.getX() >= (WIDTH - ball.getWidth())) {
+			ball.setDX(-0.3);
+			p1Score++;
+		}
+		if (ball.getY() <= 0) {
+			ball.setDY(0.3);
+
+		}
+		if (ball.getY() >= (HEIGHT - ball.getHeight())) {
+			ball.setDY(-0.3);
+		}
+		if (p1Score >= 5) {
+			System.out.println("P1 Wins with a score of " + p1Score + "!");
+			Display.destroy();
+			System.exit(0);
+		}
+		if (p2Score >= 5) {
+			System.out.println("P2 Wins with a score of " + p2Score + "!");
+			Display.destroy();
+			System.exit(0);
 		}
 	}
 
@@ -117,7 +146,7 @@ public class PongGame {
             Display.setDisplayMode(new DisplayMode(WIDTH, HEIGHT));
             Display.setTitle("Pong");
             Display.create();
-        } catch (LWJGLException e) {
+            } catch (LWJGLException e) {
             e.printStackTrace();
         }
 	}

@@ -2,12 +2,15 @@ package lwjgl_stuff;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
+import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 
+import entities.*;
+
 import static org.lwjgl.opengl.GL11.*;
 
-public class TimersAndBasicAnimation {
+public class UsingEntities {
 
 	private long lastFrame;
 	
@@ -22,21 +25,53 @@ public class TimersAndBasicAnimation {
 		return delta;
 	}
 	
-    public TimersAndBasicAnimation() {
+	private static class Box extends AbstractMoveableEntity {
+
+		public Box(double x, double y, double width, double height) {
+			super(x, y, width, height);
+		}
+
+		@Override
+		public void draw() {
+			glRectd(x, y, x + width, y + height);
+		}
+		
+	}
+	
+	private static class Point extends AbstractEntity {
+
+		public Point(double x, double y) {
+			super(x, y, 1, 1);
+		}
+
+		@Override
+		public void draw() {
+			glBegin(GL_POINTS);
+				glVertex2d(x, y);
+			glEnd();
+		}
+
+		@Override
+		public void update(int delta) {
+			// Do nothing
+		}
+		
+	}
+	
+    public UsingEntities() {
         
     	try {
             Display.setDisplayMode(new DisplayMode(640, 480));
-            Display.setTitle("Timer");
+            Display.setTitle("LWJGL Template");
             Display.create();
         } catch (LWJGLException e) {
             e.printStackTrace();
         }
-        
-    	int x = 100;
-    	int y = 100;
-    	int dx = 1;
-    	int dy = 1;
+    	// init entities
     	
+    	MoveableEntity box = new Box(100, 100, 50, 50);
+    	Entity point = new Point(10, 10);
+        
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
         glOrtho(0, 640, 480, 0, 1, -1);
@@ -46,14 +81,21 @@ public class TimersAndBasicAnimation {
 
         while (!Display.isCloseRequested()) {
             // Render Code here
+        	
+        	point.setLocation(Mouse.getX(), 480 - Mouse.getY() - 1);
+        	
             glClear(GL_COLOR_BUFFER_BIT);
             
             int delta = getDelta();
+            box.update(delta);
+            point.update(delta);
             
-            x += delta * dx * 0.1;
-            y += delta * dy * 0.1;
+            if (box.intersects(point)) {
+            	box.setDX(0.2);
+            }
             
-            glRecti(x, y, x + 30, y + 30);
+            point.draw();
+            box.draw();
             
             Display.update();
             Display.sync(60);
@@ -66,6 +108,6 @@ public class TimersAndBasicAnimation {
      * @param args
      */
     public static void main(String[] args) {
-		new TimersAndBasicAnimation();
+		new UsingEntities();
 	}
 }

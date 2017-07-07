@@ -78,4 +78,11 @@ public class BlockGrid {
             }
         }
     }
+	public void clear() {
+		for (int x = 0; x < BLOCKS_WIDTH - 1; x++) {
+            for (int y = 0; y < BLOCKS_HEIGHT - 1; y++) {
+                blocks[x][y] = new Block(BlockType.AIR, x * BLOCK_SIZE, y * BLOCK_SIZE);
+            }
+        }		
+	}
 }

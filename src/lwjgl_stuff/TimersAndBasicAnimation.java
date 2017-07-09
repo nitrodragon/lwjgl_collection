@@ -22,7 +22,7 @@ public class TimersAndBasicAnimation {
 		return delta;
 	}
 	
-    public TimersAndBasicAnimation() {
+    private TimersAndBasicAnimation() {
         
     	try {
             Display.setDisplayMode(new DisplayMode(640, 480));
@@ -34,8 +34,8 @@ public class TimersAndBasicAnimation {
         
     	int x = 100;
     	int y = 100;
-    	int dx = 1;
-    	int dy = 1;
+    	int dx = 3;
+    	int dy = 3;
     	
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
@@ -61,10 +61,7 @@ public class TimersAndBasicAnimation {
         Display.destroy();
         System.exit(0);
     }
-    
-    /**
-     * @param args
-     */
+
     public static void main(String[] args) {
 		new TimersAndBasicAnimation();
 	}

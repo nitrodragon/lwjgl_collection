@@ -10,7 +10,7 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class ShiftingCameraLaterally {
 
-    public ShiftingCameraLaterally() {
+    private ShiftingCameraLaterally() {
         
     	try {
             Display.setDisplayMode(new DisplayMode(640, 480));

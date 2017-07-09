@@ -12,8 +12,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class PongGame {
 
-	public static final int WIDTH = 640;
-	public static final int HEIGHT = 480;
+	private static final int WIDTH = 640;
+	private static final int HEIGHT = 480;
 	private boolean isRunning = true;
 	private Ball ball;
 	private Paddle paddle;
@@ -21,7 +21,7 @@ public class PongGame {
 	private int p1Score;
 	private int p2Score;
 	
-	public PongGame() {
+	private PongGame() {
 		setupDisplay();
 		setupOpenGL();
 		setupEntities();
@@ -159,7 +159,7 @@ public class PongGame {
 	
 	private static class Paddle extends AbstractMoveableEntity {
 
-		public Paddle(double x, double y, double width, double height) {
+		Paddle(double x, double y, double width, double height) {
 			super(x, y, width, height);
 		}
 
@@ -173,7 +173,7 @@ public class PongGame {
 	
 	private static class Ball extends AbstractMoveableEntity {
 
-		public Ball(double x, double y, double width, double height) {
+		Ball(double x, double y, double width, double height) {
 			super(x, y, width, height);
 		}
 

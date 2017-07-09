@@ -9,21 +9,20 @@ import org.lwjgl.opengl.DisplayMode;
 
 public class SmoothTransitions {
 
-	private static enum State {
-		// Draws nothing. Waits for input then switches to FADING.
-		INTRO, 
-		// Slowly fades in a blue rectangle. When it opacity is 100,
-		// the state is set to main.
-		FADING, 
-		// Rectangle is fully shown. If enter is pressed, it sends
-		// you back to INTRO.
-		MAIN;
-	}
+	private enum State {
+        // Draws nothing. Waits for input then switches to FADING.
+        INTRO,
+        // Slowly fades in a blue rectangle. When it opacity is 100,
+        // the state is set to main.
+        FADING,
+        // Rectangle is fully shown. If enter is pressed, it sends
+        // you back to INTRO.
+        MAIN
+    }
 	
-	// Of course, the default State is INTRO.
-	private State state = State.INTRO;
-	
-	public SmoothTransitions() {
+	private SmoothTransitions() {
+        // Of course, the default State is INTRO.
+        State state = State.INTRO;
 		try {
             Display.setDisplayMode(new DisplayMode(640, 480));
             Display.setTitle("LWJGL Template");
@@ -56,6 +55,7 @@ public class SmoothTransitions {
 						fade = 0;
 						glColor3f(0.5f, 0.5f, 1);
 						glRectf(-0.5f, -0.5f, 0.5f, 0.5f);
+						state = State.MAIN;
 						System.out.println("State changed: " + state);
 						break;
 					}

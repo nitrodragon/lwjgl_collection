@@ -103,10 +103,7 @@ public class UsingEntities {
         Display.destroy();
         System.exit(0);
     }
-    
-    /**
-     * @param args
-     */
+
     public static void main(String[] args) {
 		new UsingEntities();
 	}

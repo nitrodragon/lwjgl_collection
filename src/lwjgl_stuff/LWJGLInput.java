@@ -14,10 +14,10 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class LWJGLInput {
 	
-	static final int WIDTH = 640;
-	static final int HEIGHT = 480;
+	private static final int WIDTH = 640;
+	private static final int HEIGHT = 480;
 
-	private static final List<Box> shapes = new ArrayList<Box>(16);
+	private static final List<Box> shapes = new ArrayList<>(16);
 	private static boolean somethingIsSelected = false;
 	private static long lastColourChange;
 	
@@ -89,7 +89,7 @@ public class LWJGLInput {
 	private static class Box {
 		
 		public int x, y;
-		public boolean selected = false;
+		boolean selected = false;
 		private float colorRed, colorBlue, colorGreen;
 		
 		Box(int x, int y) {
@@ -103,10 +103,7 @@ public class LWJGLInput {
 		}
 		
 		boolean inBounds(int mousex, int mousey) {
-			if (mousex > x && mousex < x + 50 && mousey > y && mousey < y + 50)
-				return true;
-			else
-				return false;
+			return (mousex > x && mousex < x + 50 && mousey > y && mousey < y + 50);
 		}
 		
 		void update(int dx, int dy) {

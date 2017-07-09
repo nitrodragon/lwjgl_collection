@@ -1,8 +1,8 @@
 package entities;
 
 public interface MoveableEntity extends Entity {
-	public double getDX();
-	public double getDY();
-	public void setDX(double dx);
-	public void setDY(double dy);
+	double getDX();
+	double getDY();
+	void setDX(double dx);
+	void setDY(double dy);
 }

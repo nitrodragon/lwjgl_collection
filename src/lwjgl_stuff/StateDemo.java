@@ -9,13 +9,13 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class StateDemo {
 
-	private static enum State {
+	private enum State {
 		INTRO, MAIN_MENU, GAME
 	}
 	
 	private State state = State.INTRO;
 	
-    public StateDemo() {
+    private StateDemo() {
         
     	try {
             Display.setDisplayMode(new DisplayMode(640, 480));
@@ -88,10 +88,7 @@ public class StateDemo {
     	
     	}
     }
-    
-    /**
-     * @param args
-     */
+
     public static void main(String[] args) {
 		new StateDemo();
 	}

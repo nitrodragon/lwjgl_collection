@@ -1,2 +1,5 @@
 # The Lovely, Beautiful and Entertaining Process of Me Learning LWJGL
-Just a quick repo so I can access my LWJGL code from anywhere and get in the habit of pushing to GH with Desktop.
+A massive (by my account's standards) repository solely dedicated to pushing my LWJGL code from my computer.
+
+### LWJGL 2
+Turns out, I'm learning LWJGL 2 instead of 3. Oh well.

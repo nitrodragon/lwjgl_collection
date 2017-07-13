@@ -1,4 +1,4 @@
-package lwjgl_stuff;
+package opengl_stuff;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;

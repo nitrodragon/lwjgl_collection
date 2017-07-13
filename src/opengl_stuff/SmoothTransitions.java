@@ -1,4 +1,4 @@
-package lwjgl_stuff;
+package opengl_stuff;
 
 import static org.lwjgl.opengl.GL11.*;
 

@@ -1,4 +1,4 @@
-package lwjgl_stuff.advanced_rendering;
+package opengl_stuff.advanced_rendering;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
